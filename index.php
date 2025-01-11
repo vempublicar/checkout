@@ -114,18 +114,57 @@
             <div id="step2" class="step-content">
                 <h4>Informações Pessoais</h4>
                 <form>
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nome Completo</label>
-                        <input type="text" class="form-control" id="name" required>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cpf" class="form-label">CPF ou CNPJ</label>
+                            <input type="text" class="form-control" id="cpf" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label">Telefone</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" required>
+
+                    <h5 class="mt-4">Endereço</h5>
+                    <div class="row">
+                        <div class="col-md-8 mb-3">
+                            <label for="street" class="form-label">Rua</label>
+                            <input type="text" class="form-control" id="street" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="number" class="form-label">Número</label>
+                            <input type="text" class="form-control" id="number" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="neighborhood" class="form-label">Bairro</label>
+                            <input type="text" class="form-control" id="neighborhood" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="complement" class="form-label">Complemento</label>
+                            <input type="text" class="form-control" id="complement">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="city" class="form-label">Cidade</label>
+                            <input type="text" class="form-control" id="city" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="state" class="form-label">Estado</label>
+                            <input type="text" class="form-control" id="state" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="zip" class="form-label">CEP</label>
+                            <input type="text" class="form-control" id="zip" required>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="address" class="form-label">Endereço</label>
-                        <input type="text" class="form-control" id="address" required>
-                    </div>
+
                     <div class="d-flex justify-content-between">
                         <button class="btn btn-secondary" onclick="showStep('step1')">Voltar</button>
                         <button class="btn btn-primary" onclick="showStep('step3')">Próxima Etapa</button>

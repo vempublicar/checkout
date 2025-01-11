@@ -59,31 +59,6 @@
             });
             totalPrice.textContent = `R$ ${total.toFixed(2)}`;
         }
-
-        function handlePaymentMethodChange() {
-            const paymentMethod = document.getElementById('payment-method').value;
-            const cardFields = document.getElementById('card-fields');
-            if (paymentMethod === 'cartao') {
-                cardFields.style.display = 'block';
-            } else {
-                cardFields.style.display = 'none';
-            }
-        }
-
-        function showApiResponse(success) {
-            const successMessage = document.querySelector('.alert-success');
-            const errorMessage = document.querySelector('.alert-danger');
-
-            if (success) {
-                successMessage.style.display = 'block';
-                errorMessage.style.display = 'none';
-            } else {
-                successMessage.style.display = 'none';
-                errorMessage.style.display = 'block';
-            }
-
-            showStep('step4');
-        }
     </script>
 </head>
 <body>
@@ -107,71 +82,132 @@
                         <button class="btn btn-primary" onclick="addToCart('Registro de Domínio .CO', 119.99)">Adicionar ao Carrinho</button>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Produtos Adicionais</h5>
+                        <div class="product-list">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6>Proteção de Domínio Completa</h6>
+                                    <p>Evite alterações não autorizadas no seu domínio.</p>
+                                    <strong>R$ 36,99/ano</strong>
+                                    <button class="btn btn-outline-primary btn-sm float-end" onclick="addToCart('Proteção de Domínio Completa', 36.99)">Adicionar</button>
+                                </div>
+                            </div>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h6>Email Profissional</h6>
+                                    <p>Mostre profissionalismo com um email personalizado.</p>
+                                    <strong>R$ 59,99/ano</strong>
+                                    <button class="btn btn-outline-primary btn-sm float-end" onclick="addToCart('Email Profissional', 59.99)">Adicionar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="mt-4 d-flex justify-content-end">
                     <button class="btn btn-primary" onclick="showStep('step2')">Próxima Etapa</button>
                 </div>
             </div>
 
-            <!-- Etapa 3: Informações de Pagamento -->
-            <div id="step3" class="step-content">
-                <h4>Informações de Pagamento</h4>
+            <!-- Etapa 2: Informações Pessoais -->
+            <div id="step2" class="step-content">
+                <h4>Informações Pessoais</h4>
                 <form>
-                    <div class="mb-3">
-                        <label for="payment-method" class="form-label">Forma de Pagamento</label>
-                        <select class="form-select" id="payment-method" onchange="handlePaymentMethodChange()" required>
-                            <option value="">Selecione</option>
-                            <option value="pix">PIX</option>
-                            <option value="boleto">Boleto</option>
-                            <option value="cartao">Cartão de Crédito</option>
-                        </select>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">Nome Completo</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="cpf" class="form-label">CPF ou CNPJ</label>
+                            <input type="text" class="form-control" id="cpf" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phone" class="form-label">Telefone</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
                     </div>
 
-                    <div id="card-fields" style="display: none;">
-                        <div class="mb-3">
-                            <label for="card-number" class="form-label">Número do Cartão</label>
-                            <input type="text" class="form-control" id="card-number">
+                    <h5 class="mt-4">Endereço</h5>
+                    <div class="row">
+                        <div class="col-md-8 mb-3">
+                            <label for="street" class="form-label">Rua</label>
+                            <input type="text" class="form-control" id="street" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="card-expiry" class="form-label">Validade</label>
-                            <input type="text" class="form-control" id="card-expiry" placeholder="MM/AA">
+                        <div class="col-md-4 mb-3">
+                            <label for="number" class="form-label">Número</label>
+                            <input type="text" class="form-control" id="number" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="card-cvv" class="form-label">CVV</label>
-                            <input type="text" class="form-control" id="card-cvv">
+                        <div class="col-md-6 mb-3">
+                            <label for="neighborhood" class="form-label">Bairro</label>
+                            <input type="text" class="form-control" id="neighborhood" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="installments" class="form-label">Parcelamento</label>
-                            <select class="form-select" id="installments">
-                                <option value="1">À vista</option>
-                                <option value="2">2x</option>
-                                <option value="3">3x</option>
-                                <option value="4">4x</option>
-                                <option value="5">5x</option>
-                                <option value="6">6x</option>
-                            </select>
+                        <div class="col-md-6 mb-3">
+                            <label for="complement" class="form-label">Complemento</label>
+                            <input type="text" class="form-control" id="complement">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="city" class="form-label">Cidade</label>
+                            <input type="text" class="form-control" id="city" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="state" class="form-label">Estado</label>
+                            <input type="text" class="form-control" id="state" required>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <label for="zip" class="form-label">CEP</label>
+                            <input type="text" class="form-control" id="zip" required>
                         </div>
                     </div>
 
                     <div class="d-flex justify-content-between">
-                        <button class="btn btn-secondary" onclick="showStep('step2')">Voltar</button>
-                        <button class="btn btn-primary" type="button" onclick="showApiResponse(true)">Finalizar Compra</button>
+                        <button class="btn btn-secondary" onclick="showStep('step1')">Voltar</button>
+                        <button class="btn btn-primary" onclick="showStep('step3')">Próxima Etapa</button>
                     </div>
                 </form>
             </div>
 
-            <!-- Etapa 4: Resposta da API -->
-            <div id="step4" class="step-content">
-                <h4>Status da Transação</h4>
-                <div class="alert alert-success" role="alert" style="display: none;">
-                    <strong>Sucesso!</strong> Sua transação foi concluída com êxito.
-                </div>
-                <div class="alert alert-danger" role="alert" style="display: none;">
-                    <strong>Erro!</strong> Algo deu errado com sua transação. Tente novamente.
-                </div>
-                <div class="d-flex justify-content-center mt-4">
-                    <button class="btn btn-primary" onclick="showStep('step1')">Voltar ao Início</button>
-                </div>
+            <!-- Etapa 3: Informações de Pagamento -->
+            <div id="step3" class="step-content">
+    <h4>Informações de Pagamento</h4>
+    <form>
+        <div class="mb-3">
+            <label for="payment-method" class="form-label">Forma de Pagamento</label>
+            <select class="form-select" id="payment-method" required onchange="handlePaymentMethodChange()">
+                <option value="">Selecione</option>
+                <option value="pix">PIX</option>
+                <option value="boleto">Boleto</option>
+                <option value="cartao">Cartão de Crédito</option>
+            </select>
+        </div>
+
+        <!-- Campos para Cartão de Crédito -->
+        <div id="credit-card-fields" style="display: none;">
+            <div class="mb-3">
+                <label for="card-number" class="form-label">Número do Cartão</label>
+                <input type="text" class="form-control" id="card-number" placeholder="Somente para cartões">
             </div>
+            <div class="mb-3">
+                <label for="card-expiry" class="form-label">Validade</label>
+                <input type="text" class="form-control" id="card-expiry" placeholder="MM/AA">
+            </div>
+            <div class="mb-3">
+                <label for="card-cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="card-cvv" placeholder="Código de Segurança">
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+            <button class="btn btn-secondary" type="button" onclick="showStep('step2')">Voltar</button>
+            <button class="btn btn-success" id="finalize-button" type="button" onclick="showStep('step4')" disabled>Finalizar Compra</button>
+        </div>
+    </form>
+</div>
         </div>
 
         <!-- Coluna Direita: Resumo do Carrinho -->
@@ -190,6 +226,44 @@
         </div>
     </div>
 </div>
+<script>
+    function handlePaymentMethodChange() {
+        const paymentMethod = document.getElementById('payment-method').value;
+        const creditCardFields = document.getElementById('credit-card-fields');
+        const finalizeButton = document.getElementById('finalize-button');
 
+        if (paymentMethod === 'cartao') {
+            creditCardFields.style.display = 'block';
+            finalizeButton.disabled = true;
+
+            // Verifica os campos do cartão de crédito para habilitar o botão de finalizar
+            document.getElementById('card-number').addEventListener('input', validateCreditCardFields);
+            document.getElementById('card-expiry').addEventListener('input', validateCreditCardFields);
+            document.getElementById('card-cvv').addEventListener('input', validateCreditCardFields);
+        } else {
+            creditCardFields.style.display = 'none';
+            finalizeButton.disabled = false;
+        }
+    }
+
+    function validateCreditCardFields() {
+        const cardNumber = document.getElementById('card-number').value;
+        const cardExpiry = document.getElementById('card-expiry').value;
+        const cardCvv = document.getElementById('card-cvv').value;
+        const finalizeButton = document.getElementById('finalize-button');
+
+        // Validação básica dos campos
+        if (cardNumber.length >= 16 && cardExpiry.length === 5 && cardCvv.length >= 3) {
+            finalizeButton.disabled = false;
+        } else {
+            finalizeButton.disabled = true;
+        }
+    }
+
+    function showStep(step) {
+        document.querySelectorAll('.step-content').forEach(content => content.classList.remove('active'));
+        document.getElementById(step).classList.add('active');
+    }
+</script>
 </body>
 </html>

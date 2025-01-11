@@ -77,7 +77,7 @@
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Registro de Domínio .CO</h5>
+                                <h5 class="card-title">Registro de Domínios .CO</h5>
                                 <p class="card-text">Renovação em janeiro de 2026 por R$ 199,99.</p>
                                 <p class="card-text">
                                     <small class="text-muted">Valor original: <del>R$ 199,99</del></small>
